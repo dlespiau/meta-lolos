@@ -19,7 +19,7 @@ SRCREV = "2d938ac75d013f713c1225def78a53583af6a596"
 PV = "186+git${SRCPV}"
 PR = "r0"
 
-inherit useradd pkgconfig autotools vala perlnative
+inherit useradd pkgconfig autotools perlnative
 
 SRCREV = "cd96b3b86abb4a88cac2722bdfb6e5d4413f6831"
 
@@ -85,9 +85,9 @@ do_install() {
 	install -m 0644 ${WORKDIR}/var-run.conf ${D}${sysconfdir}/tmpfiles.d/
 }
 
-python populate_packages_prepend (){
-    systemdlibdir = d.getVar("base_libdir", True)
-    do_split_packages(d, systemdlibdir, '^lib(.*)\.so\.*', 'lib%s', 'Systemd %s library', extra_depends='', allow_links=True)
+python populate_packages_prepend () {
+	systemdlibdir = d.getVar("base_libdir", True)
+	do_split_packages(d, systemdlibdir, '^lib(.*)\.so\.*', 'lib%s', 'Systemd %s library', extra_depends='', allow_links=True)
 }
 
 PACKAGES =+ "${PN}-gui ${PN}-vconsole-setup ${PN}-initramfs ${PN}-analyze"

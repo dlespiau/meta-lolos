@@ -164,6 +164,8 @@ RRECOMMENDS_${PN} += "systemd-serialgetty \
 "
 
 PACKAGES =+ "udev-dbg udev udev-consolekit udev-utils udev-systemd"
+PACKAGES =+ "libudev libudev-dev libudev-dbg"
+PACKAGES =+ "libgudev libgudev-dev libgudev-dbg"
 
 FILES_udev-dbg += "${base_libdir}/udev/.debug"
 
@@ -201,6 +203,15 @@ FILES_udev-utils = "${bindir}/udevadm"
 
 FILES_udev-systemd = "${base_libdir}/systemd/system/*udev* ${base_libdir}/systemd/system/*.wants/*udev*"
 RDEPENDS_udev-systemd = "udev"
+
+FILES_libudev = "${base_libdir}/libudev.so.*"
+FILES_libudev-dbg = "${base_libdir}/.debug/libudev.so.*"
+FILES_libudev-dev = "${includedir}/libudev.h ${libdir}/libudev.so \
+                     ${libdir}/pkgconfig/libudev.pc"
+FILES_libgudev = "${base_libdir}/libgudev*.so.* ${libdir}/libgudev*.so.*"
+FILES_libgudev-dbg = "${base_libdir}/.debug/libgudev*.so.* ${libdir}/.debug/libgudev*.so.*"
+FILES_libgudev-dev = "${includedir}/gudev* ${libdir}/libgudev*.so \
+                     ${libdir}/pkgconfig/gudev*.pc"
 
 # TODO:
 # u-a for runlevel and telinit

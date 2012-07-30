@@ -15,11 +15,9 @@ SERIAL_CONSOLE ?= "115200 /dev/ttyS0"
 
 SECTION = "base/shell"
 
-inherit gitpkgv
-PKGV = "v${GITPKGVTAG}"
-
-PV = "git"
-PR = "r4"
+SRCREV = "2d938ac75d013f713c1225def78a53583af6a596"
+PV = "186+git${SRCPV}"
+PR = "r0"
 
 inherit useradd pkgconfig autotools vala perlnative
 
